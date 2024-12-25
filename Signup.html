@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMANG Tourism - Signup</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('smang bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 300px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .container h1 {
+            font-size: 24px;
+            color: #ffc107;
+        }
+
+        .container h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .form-control input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            background: transparent;
+            color: #fff;
+            outline: none;
+        }
+
+        .form-control input:focus {
+            border-color: #ffd658;
+        }
+
+        .form-control .toggle {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #ffc107;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ffd658;
+        }
+
+        .footer {
+            margin-top: 10px;
+        }
+
+        .footer a {
+            color: #ffd658;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .form-control {
+            position: relative;
+        }
+
+        .form-control .toggle {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SMANG TOURISM</h1>
+        <h2>Create Your Account</h2>
+
+        <div class="form-control">
+            <input type="text" id="full-name" placeholder="Full Name">
+        </div>
+        <div class="form-control">
+            <input type="email" id="email" placeholder="Email">
+        </div>
+        <div class="form-control">
+            <input type="text" id="phone" placeholder="Phone Number">
+        </div>
+        <div class="form-control">
+            <input type="password" id="password" placeholder="Password">
+            <span class="toggle" onclick="togglePassword('password')">👁️</span>
+        </div>
+        <div class="form-control">
+            <input type="password" id="confirm-password" placeholder="Confirm Password">
+            <span class="toggle" onclick="togglePassword('confirm-password')">👁️</span>
+        </div>
+
+        <button class="btn" onclick="signUp()">Sign Up</button>
+
+        <div class="footer">
+            <span>Already have an account? <a href="#">Login</a></span>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+
+        function signUp() {
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (!fullName || !email || !phone || !password || !confirmPassword) {
+                alert('Please fill out all fields');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            alert('Account created successfully!');
+        }
+    </script>
+</body>
+</html>
