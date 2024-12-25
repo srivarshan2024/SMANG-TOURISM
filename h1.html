@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMANG TOURISM</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chatbot | CodingNepal</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="ai.css" />
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #0c0c0ccc;
+            color: rgb(4, 4, 4);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 100px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        header nav a:hover {
+            background: #005f82;
+        }
+
+        header nav .login-register {
+            background: #ffffff;
+            color: #008cba;
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 1px solid #008cba;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header nav .login-register:hover {
+            background: #008cba;
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('eugene-prunk-rREKGlQHeYk-unsplash.jpg') no-repeat center/cover;
+            color: rgb(9, 9, 9);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .hero button {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            color: #FFD700;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .features .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .features .feature {
+            flex: 1 1 calc(33% - 40px);
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #FFD700;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer .explore-btn {
+            background-color: #FFD700;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer .explore-btn:hover {
+            background-color: #f0f0f0;
+            color: #FFD700;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer .explore-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer .explore-btn:focus {
+            outline: none;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .floating-buttons.left {
+            left: 20px;
+        }
+
+        .floating-buttons.right {
+            right: 20px;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #FFD700;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+            background: #FFD700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .float-btn span {
+            font-size: 28px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features .feature {
+                flex: 1 1 calc(100% - 40px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .floating-buttons {
+                bottom: 10px;
+            }
+
+            .floating-buttons.left {
+                left: 10px;
+            }
+
+            .floating-buttons.right {
+                right: 10px;
+            }
+
+            .float-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .float-btn span {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="tourism.jpg" alt="SMANG Logo">
+            <h1>SMANG TOURISM</h1>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="login.html" class="login-register">Login/Register</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Hassle-free Bus Rentals And Booking</h1>
+        <p>Simplifying travel with seamless bus rentals and booking for your journeys</p>
+        <button>Learn More</button>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Features</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>Easy Booking</h3>
+                <p>Book your bus journey effortlessly using our platform.</p>
+            </div>
+            <div class="feature">
+                <h3>Premium Services</h3>
+                <p>Experience comfort and luxury during your travel.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock customer support for a worry-free journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <button class="explore-btn">Explore with Us</button>
+        <p>&copy; 2024 SMANG TOURISM. All rights reserved.</p>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons left">
+        <form action="map.html">
+        <button class="float-btn" title="Open Map">
+            <span class="material-symbols-rounded">map</span>
+        </button>
+    </form>
+    </div>
+    <button id="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-rounded">close</span>
+      </button>
+  
+      <div class="chatbot-popup">
+   
+        <div class="chat-header">
+          <div class="header-info">
+            <svg class="chatbot-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+              <path
+                d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm132.1 310.7c0 10.7-8.7 19.4-19.4 19.4h-142.2c-10.7 0-19.4-8.7-19.4-19.4v-53.1c0-10.7 8.7-19.4 19.4-19.4h142.2c10.7 0 19.4 8.7 19.4 19.4v53.1zm240.8 0c0 29.5-23.9 53.5-53.5 53.5h-55.2l-151.5 98.8V669.9l151.5 98.8h55.2c29.5 0 53.5-23.9 53.5-53.5V394.5c0-29.5-23.9-53.5-53.5-53.5z" />
+            </svg> 
+            <p>Chatbot</p>
+          </div>
+        </div>
+
+      </div> 
+</body>
+</html>
