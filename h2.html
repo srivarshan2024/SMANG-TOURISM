@@ -1,165 +1,166 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smang - Premium Bus Booking</title>
+    <title>Bus Booking Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-image: url("eugene-prunk-rREKGlQHeYk-unsplash.jpg"); /* Background image for the page */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 0;
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+            background-image: url('smang bg.jpg');
+            color: #333;
         }
-
         .container {
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
-            box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.8);
+            background: #fff;
             border-radius: 10px;
-            border: 2px solid yellow;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        .logo img {
-            width: 150px;
-            height: auto;
-            margin: 0 auto;
-            border-radius: 50%;
-            border: 3px solid yellow;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: yellow;
-            margin: 20px 0 10px;
-        }
-
-        .tagline {
-            font-size: 1rem;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        .login-form {
-            padding: 20px;
-        }
-
-        .input-group {
+        .header {
+            text-align: center;
             margin-bottom: 20px;
-            text-align: left;
         }
-
-        .input-group label {
-            display: block;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+        .header h1 {
+            font-size: 2rem;
+            color: #ff7e5f;
         }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 50px; /* Rounded for a bus theme */
-            background: #333;
-            color: white;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(255, 255, 0, 0.3);
+        .section {
+            margin-bottom: 20px;
         }
-
-        .btn-login {
-            width: 100%;
-            padding: 10px;
-            background: yellow;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .payment-method {
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-
-        .btn-login:hover {
-            background: #f0c000;
-            box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
+        .payment-method:hover {
+            background: #ffecd2;
         }
-
-        .forgot-password {
-            font-size: 0.9rem;
-            color: #ccc;
-            text-decoration: none;
+        .payment-method img {
+            width: 30px;
+            height: 30px;
         }
-
-        .forgot-password:hover {
-            color: yellow;
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #ff7e5f;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
         }
-
-        .signup-section {
-            margin-top: 20px;
+        .button:hover {
+            background: #feb47b;
         }
-
-        .signup-section p {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin-bottom: 10px;
+        .agent, .review, .payment-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-
-        .btn-signup {
-            display: inline-block;
-            padding: 10px 20px;
-            background: yellow;
-            color: black;
-            text-decoration: none;
-            border-radius: 50px;
+        .review textarea {
+            resize: vertical;
+        }
+        .agent p, .payment-summary p {
+            margin: 0;
+        }
+        .payment-summary {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        .payment-summary p {
             font-size: 1rem;
+            line-height: 1.5;
         }
-
-        .btn-signup:hover {
-            background: #f0c000;
+        .payment-summary p span {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Logo Section -->
-        <div class="logo">
-            <img src="C:\Users\Varshan\OneDrive\Pictures\smang logo.jpg" alt="Smang Logo"> <!-- Replace with the actual logo image path -->
+        <div class="header">
+            <h1>Bus Booking Payment</h1>
         </div>
 
-        <!-- Title Section -->
-        <h1>SMANG TOURS</h1>
-        <p class="tagline">Book Your Journey on Premium Buses</p>
+        <div class="section payment-summary">
+            <h2>Payment Summary</h2>
+            <p>Base Fare: <span id="base-fare">$0.00</span></p>
+            <p>Taxes (GST): <span id="gst">$0.00</span></p>
+            <p>Total Amount: <span id="total-amount">$0.00</span></p>
+        </div>
 
-        <!-- Login Form Section -->
-        <div class="login-form">
-            <form action="#" method="POST">
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <div class="section choose-payment">
+            <h2>Choose Your Payment Method</h2>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <span>Google Pay</span>
+                    <img src="https://via.placeholder.com/30" alt="Google Pay">
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="payment-method">
+                    <span>PhonePe</span>
+                    <img src="https://via.placeholder.com/30" alt="PhonePe">
                 </div>
-                <button type="submit" class="btn-login">Login</button>
-            </form>
-            <a href="#" class="forgot-password">Forgot Password?</a>
+                <div class="payment-method">
+                    <span>Mobile Banking</span>
+                    <img src="https://via.placeholder.com/30" alt="Mobile Banking">
+                </div>
+                <div class="payment-method">
+                    <span>PayPal</span>
+                    <img src="https://via.placeholder.com/30" alt="PayPal">
+                </div>
+            </div>
         </div>
 
-        <!-- Signup Section -->
-        <div class="signup-section">
-            <p>New to Smang?</p>
-            <a href="#" class="btn-signup">Sign Up</a>
+        <div class="section agent">
+            <h2>Agent's Name</h2>
+            <p>John Doe (Agent ID: 12345)</p>
         </div>
+
+        <div class="section review">
+            <h2>Customer Review</h2>
+            <textarea rows="4" placeholder="Leave a review about your booking experience..."></textarea>
+        </div>
+
+        <button class="button">Make Payment</button>
     </div>
+
+    <script>
+       
+        const baseFare = 50.00; 
+
+        
+        const gst = (baseFare * 0.05).toFixed(2);
+        const totalAmount = (baseFare + parseFloat(gst)).toFixed(2);
+
+        document.getElementById('base-fare').textContent = `$${baseFare.toFixed(2)}`;
+        document.getElementById('gst').textContent = `$${gst}`;
+        document.getElementById('total-amount').textContent = `$${totalAmount}`;
+    </script>
 </body>
 </html>
