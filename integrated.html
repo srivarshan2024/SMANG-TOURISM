@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Preview</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #2e3a87;
+            color: white;
+            font-size: 24px;
+        }
+        .bus-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px;
+            padding: 20px;
+        }
+        .bus-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            animation: slideIn 0.6s ease-in-out;
+        }
+        .bus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        .bus-card:hover .price-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .bus-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .bus-content {
+            padding: 15px;
+        }
+        .bus-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .bus-agency {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .bus-review {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .price-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(46, 58, 135, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Bus Preview</header>
+    <div class="bus-container" id="busContainer">
+        <!-- Bus cards will be dynamically added here -->
+    </div>
+    <script>
+        const buses = [
+            {
+                image: "https://via.placeholder.com/300x200.png?text=Bus+1",
+                title: "Luxury Sleeper Bus",
+                agency: "Dream Travels",
+                review: "4.5 stars (234 reviews)",
+                price: "$50 - $100"
+            },
+            {
+                image: "https://via.placeholder.com/300x200.png?text=Bus+2",
+                title: "Economy Express",
+                agency: "GoBudget Agency",
+                review: "4.2 stars (132 reviews)",
+                price: "$30 - $60"
+            },
+            {
+                image: "https://via.placeholder.com/300x200.png?text=Bus+3",
+                title: "Family Comfort Bus",
+                agency: "Comfort Journey",
+                review: "4.8 stars (410 reviews)",
+                price: "$60 - $120"
+            },
+            {
+                image: "https://via.placeholder.com/300x200.png?text=Bus+4",
+                title: "QuickTrip Coach",
+                agency: "FlashLine Travels",
+                review: "4.6 stars (290 reviews)",
+                price: "$40 - $90"
+            }
+        ];
+
+        const busContainer = document.getElementById('busContainer');
+
+        buses.forEach(bus => {
+            const busCard = document.createElement('div');
+            busCard.className = 'bus-card';
+
+            busCard.innerHTML = `
+                <img src="${bus.image}" alt="${bus.title}" class="bus-image">
+                <div class="bus-content">
+                    <div class="bus-title">${bus.title}</div>
+                    <div class="bus-agency">Agency: ${bus.agency}</div>
+                    <div class="bus-review">Review: ${bus.review}</div>
+                </div>
+                <div class="price-details">Price: ${bus.price}</div>
+            `;
+            
+            busContainer.appendChild(busCard);
+        });
+    </script>
+</body>
+</html>
